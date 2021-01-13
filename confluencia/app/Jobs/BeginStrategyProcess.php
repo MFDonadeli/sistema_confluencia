@@ -36,8 +36,8 @@ class BeginStrategyProcess implements ShouldQueue
      */
     public function handle()
     {
-        Log::info("Running Job");
-        
+        \Log::info("Running Job");
+
         $aaa = new StrategyProcess($this->moeda, $this->source);
         $aaa->run($this->dthr);
     }

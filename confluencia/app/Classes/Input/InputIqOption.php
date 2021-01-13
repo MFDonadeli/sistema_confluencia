@@ -21,7 +21,7 @@ class InputIqOption implements Writer
             $arr_return[$pair->pair] = $this->process_and_save($pair->idpairs, $pair->pair);
 
             if ($arr_return[$pair->pair] != '') {
-                Log::info("Dispatching job for: " . $pair->pair);
+                \Log::info("Dispatching job for: " . $pair->pair);
                 $estrategiaJob = new BeginStrategyProcess('iq', $pair->idpairs, $dthr);
                 dispatch($estrategiaJob);
             }
