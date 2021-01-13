@@ -1,0 +1,24 @@
+Mensagem:
+ Quantas velas vão ser pegas para análise //mensagem_qtde e howmany_candles_for_message
+ Quais velas vão ser usadas para análise /mensagem_analise e candles_for_message
+Entrada:
+ Quantas velas vão ser pegas para análise //entrada_qtde e howmany_candles_for_entering
+ Quais velas vão ser usadas para análise //vela_analise e candles_for_entering
+ Quantas velas vão ser pegas para análise do resultado (pode ser o mesmo que (1)) e howmany_candles_for_entering_analysis
+ Quais velas vão ser usadas para análise do resultado (pode ser o mesmo que (2)) e candles_for_entering_analysis
+Gale1:
+ Quantas velas vão ser pegas para análise (1) //gale1_qtde
+ Quais velas vão ser usadas para análise (2) //gale1_analise
+ Vela do resultado da entrada //entrada_resultado e candle_entering_result
+ Quantas velas vão ser pegas para análise do resultado (pode ser o mesmo que (3))
+ Quais velas vão ser usadas para análise do resultado (pode ser o mesmo que (4))
+Gale2:
+ Quantas velas vão ser pegas para análise (3) //gale2_qtde
+ Quais velas vão ser usadas para análise (4) //gale2_analise
+ Vela do resultado do gale1 //gale1_resultado
+ Quantas velas vão ser pegas para análise do resultado
+ Quais velas vão ser usadas para análise do resultado
+Gale2Res:
+ Quantas velas vão ser pegas para análise do resultado //gale2res_qtde
+ Quais velas vão ser usadas para análise do resultado //gale2res_analise
+ Vela do resultado do gale2 //gale2_resultado
