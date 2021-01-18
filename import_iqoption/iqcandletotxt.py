@@ -8,6 +8,9 @@ from dateutil import tz
 
 import asyncio
 import aiohttp
+import logging
+
+logging.basicConfig(filename='myapp.log', level=logging.INFO)
 
 API = IQ_Option('mfdonadeli@gmail.com','43EOUo1*DYYS')
 API.connect()
@@ -33,6 +36,8 @@ def timestamp_converter(x, datahora="datahora"):
     return str(hora.astimezone(tz.gettz('America/Sao Paulo')).strftime('%Y-%m-%d'))[:-6]
 
 def payout(par, tipo):
+    logging.info("Entrando para pegar payout de " + par + " do tipo " + tipo)
+
     if tipo == 'turbo':
         a = API.get_all_profit()
         return int(100 * a[par]['turbo'])
@@ -52,6 +57,7 @@ def payout(par, tipo):
             return 0
 
 def log_iq():
+    logging.info("Entrando para gravar estado atual no bd")
     values = ""
     for paridade in pares['turbo']:
         if pares['turbo'][paridade]['open'] == True:
@@ -89,6 +95,7 @@ def log_iq():
             print("MySQL connection is closed")           
 
 def get_all_pairs():
+    logging.info("Pegando todos os pares no BD")
     try:
         connection = mysql.connector.connect(host='localhost',
                                             database='iq',
@@ -135,6 +142,7 @@ while True:
             if velas == None:
                 continue
             values = ''
+            logging.info("Pegou velas de " + par_db[1])
             
             last_candle = ''
             for vela in velas:
@@ -154,6 +162,7 @@ while True:
             f = open(par_db[1]+".txt", "w+")
             f.write(values)
             f.close()
+            logging.info("Escreveu velas no arquivo")
 
     log_iq()
 
@@ -161,6 +170,7 @@ while True:
     print(last_time_processed)
 
     if last_candle != last_time_processed:
+        logging.info("Vai enviar...")
         loop = asyncio.get_event_loop()
         loop.run_until_complete(main(last_candle))  
         last_time_processed = last_candle
