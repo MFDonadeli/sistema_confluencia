@@ -40,7 +40,12 @@ def payout(par, tipo):
 
     if tipo == 'turbo':
         a = API.get_all_profit()
-        return int(100 * a[par]['turbo'])
+        try:
+            b = int(100 * a[par]['turbo'])
+        except Error:
+            return 0
+
+        return b
     elif tipo == 'digital':
         try:
             API.subscribe_strike_list(par, 1)
