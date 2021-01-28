@@ -40,11 +40,12 @@ def payout(par, tipo):
 
     if tipo == 'turbo':
         a = API.get_all_profit()
-        try:
-            b = int(100 * a[par]['turbo'])
-        except Error:
-            return 0
 
+        if isinstance(a[par]['turbo'], dict):
+            b = 0
+        else:                
+            b = int(100 * a[par]['turbo'])
+        
         return b
     elif tipo == 'digital':
         try:
@@ -80,8 +81,8 @@ def log_iq():
     try:
         connection = mysql.connector.connect(host='localhost',
                                             database='iq',
-                                            user='root',
-                                            password='')
+                                            user='mfdg',
+                                            password='@@@123')
         mySql_insert_query = "REPLACE INTO pairs_iq_option_states (pair, payout, open, type) " \
                             + "VALUES " + values
 
@@ -104,8 +105,8 @@ def get_all_pairs():
     try:
         connection = mysql.connector.connect(host='localhost',
                                             database='iq',
-                                            user='root',
-                                            password='')
+                                            user='mfdg',
+                                            password='@@@123')
         if connection.is_connected():
             db_Info = connection.get_server_info()
             print("Connected to MySQL Server version ", db_Info)
